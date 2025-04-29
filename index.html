@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FlexCam v2.0 – User Guide</title>
+
+  <!-- Google font (optional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- External stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <h1>FlexCam – User Guide</h1>
+    <p><em>View3D ➜ Sidebar ➜ <strong>FlexCam</strong></em></p>
+
+    <!-- 2. Installation --------------------------------------------------- -->
+    <h2>2.&nbsp;Installation</h2>
+<pre>
+1. Download <kbd>FlexCam.zip</kbd> file
+2. Blender ➜ Edit ➜ Preferences ➜ Add-ons ➜ <kbd>Install…</kbd> ➜ pick the zip
+3. Enable <strong>FlexCam</strong> in the list
+4. <kbd>Save Preferences</kbd>
+</pre>
+    <p>Blender 4.4 or newer.</p>
+
+    <!-- 3. Quick-start ---------------------------------------------------- -->
+    <h2>3.&nbsp;Quick-start (10 seconds)</h2>
+    <table>
+      <thead><tr><th style="width:4rem">Step</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td><strong>A</strong></td><td>Select the object you want to track.</td></tr>
+        <tr><td><strong>B</strong></td><td>In <em>FlexCam ➜ Trackers</em> press <kbd>+</kbd>. A tracker is added; tweak its position if needed.</td></tr>
+        <tr><td><strong>C</strong></td><td>Select a camera, press <kbd>+</kbd> in <em>FlexCam ➜ Cameras</em>.</td></tr>
+        <tr><td><strong>D</strong></td><td>The camera is now tracking.</td></tr>
+      </tbody>
+    </table>
+
+    <!-- 4. UI tour ------------------------------------------------------- -->
+    <h2>4.&nbsp;UI tour</h2>
+
+    <h3>4.1 Trackers panel</h3>
+    <ul>
+      <li><strong>List</strong> — every tracker created.<br>
+          👁 toggles viewport visibility<br>
+          📷 toggles render visibility.</li><br>
+      <li><kbd>+</kbd> / <kbd>−</kbd> — add / remove trackers. New trackers are placed in the <strong>TRACKING OBJECTS</strong> collection.</li>
+    </ul>
+
+    <h3>4.2 Cameras panel</h3>
+    <p>Select a heading below to see its settings.</p>
+
+    <!-- Movement -->
+    <details>
+      <summary>Movement Settings</summary>
+      <div>
+        <ul>
+          <li><strong>Camera Position (X Y Z)</strong> — Adjusts camera position (padlocks freeze positions).</li>
+          <li><strong>Follow Distance</strong> — Distance that the camera will follow a tracker.</li>
+        </ul>
+      </div>
+    </details>
+
+    <!-- Damping -->
+    <details>
+      <summary>Damping Settings</summary>
+      <div>
+        <p><em>Damping adds “delay”: higher numbers → slower reaction.</em></p>
+        <ul>
+          <li><strong>Pitch / Yaw Damping</strong> — vertical / horizontal rotational delay.</li>
+          <li><strong>X / Z Motion Scale</strong> — exaggerate or soften subject motion.</li>
+          <li><strong>Position Damping</strong> (X Y Z) — per-axis delay for position.</li>
+        </ul>
+      </div>
+    </details>
+
+    <!-- Lens -->
+    <details>
+      <summary>Lens Settings</summary>
+      <div>
+        <ul>
+          <li><strong>Dynamic FOV</strong> — auto-zoom to keep trackers in frame.</li>
+          <li><strong>FOV Damping</strong> — responsiveness of that zoom.</li>
+        </ul>
+      </div>
+    </details>
+
+    <!-- Roll -->
+    <details>
+      <summary>Roll Settings</summary>
+      <div><p><strong>Camera Roll</strong> — manual tilt.</p></div>
+    </details>
+
+    <!-- Curve -->
+    <details>
+      <summary>Curve Mode (enabling)</summary>
+      <div>
+        <ol>
+          <li>Tick <strong>Enable Curve</strong>.</li>
+          <li>Choose a <strong>Curve Object</strong>. FlexCam will then follow the curve path.</li>
+        </ol>
+      </div>
+    </details>
+
+    <details>
+      <summary>Curve Settings</summary>
+      <div>
+        <ul>
+          <li><strong>Path Offset</strong> — slide along the curve (animatable).</li>
+          <li><strong>Empty Position Offset</strong> — Offsets camera from curve.</li>
+        </ul>
+      </div>
+    </details>
+
+    <!-- Viewport -->
+    <details>
+      <summary>Viewport Settings</summary>
+      <div>
+        <ul>
+          <li><strong>FOV Zoom</strong> — how much of the viewport the tracker fills.</li>
+          <li><strong>Frame Offset (X Y Z)</strong> — Controls position offset of viewport.</li>
+        </ul>
+      </div>
+    </details>
+
+    <!-- Advanced -->
+    <details>
+      <summary>Advanced Settings</summary>
+      <div>
+        <ul>
+          <li><strong>Follow Rotation</strong> — locks camera offset to tracker rotation (great for drift shots).</li>
+          <li><strong>Ignore Rotation for FOV</strong> — stops rotation influencing Dynamic FOV.</li>
+        </ul>
+      </div>
+    </details>
+
+    <p><strong>Pause / Resume Tracking</strong> – Manually Pauses/resumes camera tracking.</p>
+    <p><strong>Bake Camera / Clear Bake</strong> – Keyframes camera movement for rendering. Note: camera should be baked before final render to avoid stutter issues</p>
+
+    <!-- 5. Rendering multiple cameras ------------------------------------ -->
+    <h2>5.&nbsp;Rendering multiple cameras</h2>
+    <p>Batch-export every FlexCam view in one go with Blender’s <strong>Multi-View</strong> system:</p>
+
+    <ol>
+      <li>Open <strong>Output Properties ▸ Stereoscopy</strong>, tick <em>Stereoscopy</em>, set <em>➜ Multi-View</em>.</li>
+      <li>In the Multi-View list press <kbd>+</kbd> for each camera.  
+          Rename the <em>Suffix</em> field to your camera's suffix.</li>
+      <li>NOTE: Remember to bake cameras before the render so motion is locked.</li>
+    </ol>
+
+    <p>Need a visual walk-through?&nbsp;
+       <a href="https://www.youtube.com/watch?v=GX5YnybYFSI" target="_blank" rel="noopener">Watch this 3-minute YouTube guide.</a></p>
+
+    <!-- 6. FAQ ----------------------------------------------------------- -->
+    <h2>6.&nbsp;FAQ</h2>
+    <table>
+      <tr><th>Q</th><th>A</th></tr>
+      <tr><td>Does FlexCam work with rigs?</td><td>Yes. Add a tracker, then pick a bone in the tracker list.</td></tr>
+      <tr><td>Can I keyframe the sliders?</td><td>Absolutely — right-click ➜ Insert Keyframe.</td></tr>
+      <tr><td>Can I track multiple characters?</td><td>Yes, just add trackers to each character.</td></tr>
+    </table>
+
+    <!-- 7. Limitations ---------------------------------------------------- -->
+    <h2>7.&nbsp;Limitations</h2>
+    <p>
+      FlexCam updates the camera in real-time. However <strong>Cycles</strong>, was not designed around this. Cycles updates the scene every camera movement which, when paired with FlexCam’s design, causes the scene to resample while in rendered view.  
+      If you’re previewing in rendered view, it’s often best to <em>Pause Tracking</em>.
+    </p>
+
+    <!-- 8. Version ------------------------------------------------------- -->
+    <h2>8.&nbsp;Version history</h2>
+    <ul>
+      <li><strong>1.0.0</strong> — Initial release.</li>
+    </ul>
+
+    <blockquote>Enough reading — go make something!</blockquote>
+
+    <p class="footer">© 2025 Apex Assets — FlexCam 2.0</p>
+  </div>
+</body>
+</html>
